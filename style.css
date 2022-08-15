@@ -7,7 +7,18 @@
 h1{
   text-align: center;
   align-items: center;
-  font-size: 40px;
+  font-size: 50px;
+  font-family: 'Niconne', cursive;
+  text-shadow: 1px 1px 0px #00fa9a,
+               1px 2px 0px #00fa9a,
+               1px 3px 0px #00fa9a,
+               1px 4px 0px #00fa9a,
+               1px 5px 0px #00fa9a,
+               1px 6px 0px #00fa9a,
+               1px 10px 5px rgba(16, 16, 16, 0.5),
+               1px 15px 10px rgba(16, 16, 16, 0.4),
+               1px 20px 30px rgba(16, 16, 16, 0.3),
+               1px 25px 50px rgba(16, 16, 16, 0.2);
 }
 
 
@@ -59,6 +70,7 @@ body{
 .front {
   height: 90px;
   width: 90px;
+  border-radius: 15px;
 }
 
 .back,
@@ -74,7 +86,6 @@ body{
 
 .back {
   transform: rotateY(180deg);
-  background-color: #6589F9;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -85,7 +96,7 @@ body{
 }
 
 .match .front {
-  background: #6589F9 !important;
+  background: #6589F9;
 }
 
 @media screen and (min-width: 768px){

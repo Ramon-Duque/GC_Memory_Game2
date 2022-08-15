@@ -4,9 +4,6 @@ function myCounter() {
   document.getElementById("timer").innerHTML = ++counter;
 }
 
-
-// randomizer array for cards, with img sources for whatever pics we want to use
-
 const cardArray = [
  {
   name: 'arcdetriophme',
@@ -33,9 +30,11 @@ const cardArray = [
   img: 'images/tajmahal.jpeg',
   }
 ]
+// Create and randomize cards in grid
 let memoryGameGrid = cardArray.concat(cardArray)
 memoryGameGrid.sort(() => 0.5 - Math.random());
 
+// stores our guesses
 let firstGuess = '';
 let secondGuess = '';
 let count = 0;
@@ -53,7 +52,8 @@ memoryGameGrid.forEach(item => {
   const card = document.createElement('div');
   card.classList.add('card');
   card.dataset.name = name;
-
+  
+//  adds front and back divs
   const front = document.createElement('div');
   front.classList.add('front');
 
@@ -66,13 +66,14 @@ memoryGameGrid.forEach(item => {
   card.appendChild(back);
 });
 
+// matching elements function
 const match = () => {
   const selected = document.querySelectorAll('.selected');
   selected.forEach(card => {
     card.classList.add('match');
   });
 };
-
+// Reset our guess count and selections back to original value
 const resetGuesses = () => {
   firstGuess = '';
   secondGuess = '';
@@ -88,7 +89,7 @@ const resetGuesses = () => {
 grid.addEventListener('click', event => {
 
   const clicked = event.target;
-
+// only selects divs inside our grid
   if (
     clicked.nodeName === 'SECTION' ||
     clicked === previousTarget ||
@@ -100,16 +101,18 @@ grid.addEventListener('click', event => {
 
   if (count < 2) {
     count++;
+    // first guess
     if (count === 1) {
       firstGuess = clicked.parentNode.dataset.name;
       console.log(firstGuess);
       clicked.parentNode.classList.add('selected');
+      // second guess
     } else {
       secondGuess = clicked.parentNode.dataset.name;
       console.log(secondGuess);
       clicked.parentNode.classList.add('selected');
     }
-
+    //  if guesses are not empty and first = second it runs the match funtion
     if (firstGuess && secondGuess) {
       if (firstGuess === secondGuess) {
         setTimeout(match, delay);
@@ -120,3 +123,4 @@ grid.addEventListener('click', event => {
   }
 
 });
+
